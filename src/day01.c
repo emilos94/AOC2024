@@ -53,6 +53,7 @@ int count_occurence(int value, int* list) {
         if (list[i] == value) {
             count++;
         }
+        // list is sorted, we can return if value is less than
         else if (list[i] < value) {
             return count;
         }
