@@ -102,6 +102,28 @@ StringView* string_split(String str, char delimiter) {
     return result;
 }
 
+StringView* string_split_str(String str, String delimiter) {
+    StringView* result = list(StringView);
+
+    u32 marker = 0;
+    for (int i = 0; i < str.length; i++) {
+        if (string_chars_startswith(str.chars + i, delimiter)) {
+            StringView* element = list_push(result);
+            element->chars = str.chars + marker;
+            element->length = i - marker;
+            marker = i + 1;
+        }
+    }
+
+    if (marker != str.length) {
+        StringView* element = list_push(result);
+        element->chars = str.chars + marker;
+        element->length = str.length - marker + 1;
+    }
+
+    return result;
+}
+
 s32 string_toint(String s) {
     return atoi(s.chars);
 }
