@@ -14,6 +14,7 @@ typedef struct ListHeader {
 void* list_create(u32 initial_capacity, u32 element_byte_size);
 void* list_ensure_capacity(void* list, u32 capacity);
 void list_free(void* list);
+bool list_remove(void* list, u32 idx);
 
 #define list_DEFAULT_INITIAL_CAPACITY 16
 #define list(t) (t*)list_create(list_DEFAULT_INITIAL_CAPACITY, sizeof(t));
@@ -38,5 +39,13 @@ void list_free(void* list);
 #define list_foreach(list, type, name)\
 for(int i = 0; i < list_length(list); i++)\
 for(type* name = list + i;name != NULL; name = NULL)
+
+#define list_copyto(source, destination)\
+do {\
+    for (int i = 0; i < list_length(source); i++) {\
+        list_append(destination, source[i]);\
+    }\
+} while (0);\
+
 
 #endif // LIST_H

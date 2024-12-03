@@ -124,6 +124,13 @@ StringView* string_split_str(String str, String delimiter) {
     return result;
 }
 
+void stringview_print(StringView string_view) {
+    for (int i = 0; i < string_view.length; i++) {
+        printf("%c", string_view.chars[i]);
+    }
+    printf("\n");
+}
+
 s32 string_toint(String s) {
     return atoi(s.chars);
 }

@@ -33,3 +33,23 @@ void list_free(void* arr) {
     ListHeader* header = list_header(arr);
     free(header);
 }
+
+bool list_remove(void* list, u32 idx) {
+    u32 length = list_length(list);
+    if (idx >= length) {
+        return false;
+    }
+
+    if (idx == length-1) {
+        ListHeader* header = list_header(list);
+        header->length--;
+        return true;
+    }
+
+    u32 last_index = length-1;
+    ListHeader* header = list_header(list);
+    u32 elements_to_move = last_index - idx;
+    memcpy(list + header->element_byte_size * idx, list + header->element_byte_size * (idx + 1), header->element_byte_size * elements_to_move);
+    header->length--;
+    return true;
+}

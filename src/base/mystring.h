@@ -28,6 +28,7 @@ bool string_chars_startswith(char* chars, String prefix);
 bool string_endswith(String left, String right);
 StringView* string_split(String str, char delimiter);
 StringView* string_split_str(String str, String delimiter);
+void stringview_print(StringView string_view);
 s32 string_toint(String s);
 u32 string_to_arrayf32(String s, f32* destination, char delimiter);
 u32 string_to_arrayu32(String s, u32* destination, char delimiter);
