@@ -32,5 +32,6 @@ void stringview_print(StringView string_view);
 s32 string_toint(String s);
 u32 string_to_arrayf32(String s, f32* destination, char delimiter);
 u32 string_to_arrayu32(String s, u32* destination, char delimiter);
+bool char_is_number(char c);
 
 #endif // STRING_H
