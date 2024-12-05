@@ -160,3 +160,7 @@ u32 string_to_arrayu32(String s, u32* destination, char delimiter) {
 
     return count;
 }
+
+bool char_is_number(char c) {
+    return c >= '0' && c <= '9';
+}
