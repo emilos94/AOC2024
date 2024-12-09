@@ -105,13 +105,14 @@ StringView* string_split(String str, char delimiter) {
 StringView* string_split_str(String str, String delimiter) {
     StringView* result = list(StringView);
 
+    u32 limit = str.length - delimiter.length;
     u32 marker = 0;
     for (int i = 0; i < str.length; i++) {
-        if (string_chars_startswith(str.chars + i, delimiter)) {
+        if (i < limit && string_chars_startswith(str.chars + i, delimiter)) {
             StringView* element = list_push(result);
             element->chars = str.chars + marker;
             element->length = i - marker;
-            marker = i + 1;
+            marker = i + delimiter.length;
         }
     }
 
