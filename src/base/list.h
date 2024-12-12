@@ -47,5 +47,14 @@ do {\
     }\
 } while (0);\
 
-
+#define list_contains(list, value)({\
+bool result = false;\
+for(int idx = 0; idx < list_length(list); idx++) {\
+    if (list[idx] == value) {\
+        result = true;\
+        break;\
+    }\
+};\
+result;\
+})
 #endif // LIST_H

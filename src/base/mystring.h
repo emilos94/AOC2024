@@ -16,6 +16,7 @@ typedef struct String {
 typedef String StringView;
 
 #define STR(x) (String){.chars = x, .length = strlen(x)}
+#define TO_STR(x) ((String) {.chars = (char*)&x, .length = sizeof(x)})
 #define STRING_VIEW(x, n) (String){.chars = x, .length = n}
 #define STRING_EMPTY (String){.chars = 0, .length = 0}
 
@@ -23,6 +24,7 @@ String string_copy_n(char* chars, u32 count);
 String string_copy(String str);
 String string_fmt_n(char* chars, u32 n, ...);
 bool string_equals(String left, String right);
+bool string_contains_char(String str, char c);
 bool string_startswith(String left, String right);
 bool string_chars_startswith(char* chars, String prefix);
 bool string_endswith(String left, String right);
