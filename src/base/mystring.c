@@ -41,6 +41,16 @@ bool string_equals(String left, String right) {
     return true;
 }
 
+bool string_contains_char(String str, char c) {
+    for (int i = 0; i < str.length; i++) {
+        if (str.chars[i] == c) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 // Does left start with right ? 
 bool string_startswith(String left, String right) {
     if (left.length < right.length) return false;

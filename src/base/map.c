@@ -84,7 +84,11 @@ void* map_get(Map* map, String key) {
         search_counter++;
     }
 
-    return _map_value_at(map, index);
+    if (map->occupied[index] && string_equals(key, _map_key_at(map, index))) {
+        return _map_value_at(map, index);
+    }
+
+    return NULL;
 }
 
 void map_free(Map* map) {
